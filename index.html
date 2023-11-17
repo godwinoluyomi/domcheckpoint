@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width= , initial-scale=1.0">
+        <meta name="description" content="Quick Buy Shopping Cart">
+        <meta name="keywords" content="Quick Buy">
+        <meta name="author" content="Oluyomi Godwin">
+        <title> Quick Buy </title>
+
+        <link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+
+        <link rel="stylesheet" type="text/css" href="assets/fontawesome/css/fontawesome.css">
+        <link rel="stylesheet" type="text/css" href="assets/fontawesome/css/brands.css">
+        <link rel="stylesheet" type="text/css" href="assets/fontawesome/css/solid.css">
+    </head>
+
+    <!-- Calculate initial total price on body load -->
+    <body onload="totalPrice(subTotalPrice());">
+        <nav class="navbar navbar-expand-lg sticky-top bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html"> QUICK BUY </a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#"> Home </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html"> Cart </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+
+        <!-- Page header and notification -->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12">
+                    <h6 class="display-5 cust-header"> Shopping cart </h6>
+                </div>
+                <div class="col-12">
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        Please, confirm that every item in your cart is correct.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Items -->
+        <div class="container mt-5">
+            <div class="row">
+
+                <!-- Item List -->
+                <div class="col-md-8">
+
+                    <div class="row">
+
+                        <div class="col-12 itemlist" id="item1">
+                            <div class="card mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-2 p-3">
+                                        <img src="img/ace_headphone.jpg" class="img-fluid rounded-start" alt="ace_headphone">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="card-body">
+                                            <h5 class="card-title fw-light"> Ace Headphone <span class="float-end card-text fs-5"> ₦<span id="price1" class="price">12600</span></span></h5>
+                                            <div class="d-inline-flex mt-2 mb-2 mt-md-5">
+                                                <div class="input-group input-group-sm">
+                                                    <button class="btn btn-outline-secondary subtract" type="button" id="subtract1" onclick="subtractItem('1');"><i class="fa-solid fa-minus"></i></button>
+                                                    <input type="text" class="form-control text-end qty" id="qty1" placeholder="" value="1" readonly>
+                                                    <button class="btn btn-outline-secondary add" type="button" id="add1" onclick="addItem('1');"><i class="fa-solid fa-plus"></i></button>
+                                                </div>
+                                                <p class="card-text fs-5 mx-4"> ₦<span id="total1" class="total">300</span> </p>
+                                            </div>
+                                            <div class="d-inline-flex mt-2 mb-2 mt-md-5 float-lg-end">
+                                                <button type="button" class="btn btn-outline-primary m-2 btn-sm" id="like1" onclick="likeItem('1');"><i class="fa-solid fa-heart"></i> </button>
+                                                <button type="button" class="btn btn-outline-danger m-2 btn-sm" onclick="deleteItem('1');"><i class="fa-solid fa-trash"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+
+                        <div class="col-12 itemlist" id="item2">
+                            <div class="card mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-2 p-3">
+                                        <img src="img/infinix_hot_30.jpg" class="img-fluid rounded-start" alt="infinix_hot_30">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="card-body">
+                                            <h5 class="card-title fw-light"> Infinix Hot 30 <span class="float-end card-text fs-5"> ₦<span id="price2" class="price">125000</span> </span></h5>
+                                            <div class="d-inline-flex mt-2 mb-2 mt-md-5">
+                                                <div class="input-group input-group-sm">
+                                                    <button class="btn btn-outline-secondary subtract" type="button" id="subtract2" onclick="subtractItem('2');"><i class="fa-solid fa-minus"></i></button>
+                                                    <input type="text" class="form-control text-end qty" id="qty2" placeholder="" value="1" readonly>
+                                                    <button class="btn btn-outline-secondary add" type="button" id="add2" onclick="addItem('2');"><i class="fa-solid fa-plus"></i></button>
+                                                </div>
+                                                <p class="card-text fs-5 mx-4"> ₦<span id="total2" class="total">300</span> </p>
+                                            </div>
+                                            <div class="d-inline-flex mt-2 mb-2 mt-md-5 float-lg-end">
+                                                <button type="button" class="btn btn-outline-primary m-2 btn-sm" id="like2" onclick="likeItem('2');"><i class="fa-solid fa-heart"></i> </button>
+                                                <button type="button" class="btn btn-outline-danger m-2 btn-sm" onclick="deleteItem('2');"><i class="fa-solid fa-trash"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+
+                        <div class="col-12 itemlist" id="item3">
+                            <div class="card mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-2 p-3">
+                                        <img src="img/oraimo_10000mah.jpg" class="img-fluid rounded-start" alt="oraimo_10000mah">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="card-body">
+                                            <h5 class="card-title fw-light"> Oraimo 10000mah Powerbank <span class="float-end card-text fs-5"> ₦<span id="price3" class="price">15000</span> </span></h5>
+                                            <div class="d-inline-flex mt-2 mb-2 mt-md-5">
+                                                <div class="input-group input-group-sm">
+                                                    <button class="btn btn-outline-secondary subtract" type="button" id="subtract3" onclick="subtractItem('3');"><i class="fa-solid fa-minus"></i></button>
+                                                    <input type="text" class="form-control text-end qty" id="qty3" placeholder="" value="1">
+                                                    <button class="btn btn-outline-secondary add" type="button" id="add3" onclick="addItem('3');"><i class="fa-solid fa-plus"></i></button>
+                                                </div>
+                                                <p class="card-text fs-5 mx-4"> ₦<span id="total3" class="total">300</span> </p>
+                                            </div>
+                                            <div class="d-inline-flex mt-2 mb-2 mt-md-5 float-lg-end">
+                                                <button type="button" class="btn btn-outline-primary m-2 btn-sm" id="like3" onclick="likeItem('3');"><i class="fa-solid fa-heart"></i> </button>
+                                                <button type="button" class="btn btn-outline-danger m-2 btn-sm" onclick="deleteItem('3');"><i class="fa-solid fa-trash"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+
+                        <div class="col-12 itemlist" id="item4">
+                            <div class="card mb-3">
+                                <div class="row g-0">
+                                    <div class="col-md-2 p-3">
+                                        <img src="img/techno_wireless.jpg" class="img-fluid rounded-start" alt="techno_wireless">
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="card-body">
+                                            <h5 class="card-title fw-light"> Techno Wireless Earphone <span class="float-end card-text fs-5"> ₦<span id="price4" class="price">8000</span> </span></h5>
+                                            <div class="d-inline-flex mt-2 mb-2 mt-md-5">
+                                                <div class="input-group input-group-sm">
+                                                    <button class="btn btn-outline-secondary subtract" type="button" id="subtract4" onclick="subtractItem('4');"><i class="fa-solid fa-minus"></i></button>
+                                                    <input type="text" class="form-control text-end qty" id="qty4" placeholder="" value="4" readonly>
+                                                    <button class="btn btn-outline-secondary add" type="button" id="add4" onclick="addItem('4');"><i class="fa-solid fa-plus"></i></button>
+                                                </div>
+                                                <p class="card-text fs-5 mx-4"> ₦<span id="total4" class="total">300</span> </p>
+                                            </div>
+                                            <div class="d-inline-flex mt-2 mb-2 mt-md-5 float-lg-end">
+                                                <button type="button" class="btn btn-outline-primary m-2 btn-sm" id="like4" onclick="likeItem('4');"><i class="fa-solid fa-heart"></i> </button>
+                                                <button type="button" class="btn btn-outline-danger m-2 btn-sm" onclick="deleteItem('4');"><i class="fa-solid fa-trash"></i> </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Item Price and Checkout -->
+                <div class="col-md-4">
+                    <div class="border border-secondary-subtle rounded-2 p-3">
+                        <p class="fs-4 fw-light"> Summary </p>
+                        <div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item fs-5"> Item Price <span class="float-end"> ₦<span id="subtotalprice">0</span> </span></li>
+                                <li class="list-group-item fs-6"> Tax <span class="float-end"> <span id="taxprice">7.5</span>% </span></li>
+                                <li class="list-group-item fs-6"> Discount <span class="float-end"> <span id="discountprice">12</span>% </span></li>
+                                <li class="list-group-item fs-3 fw-light"> Total <span class="float-end"> ₦<span id="totalprice">0</span> </span></li>
+                            </ul>
+                            <small class="text-muted" id="summarywarning"> </small>
+                        </div>
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="button" class="btn btn-primary"> Checkout </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="bg-secondary-subtle mt-5 p-2">
+            <div class="container text-center">
+                <div class="row">
+                    <div class="col-12">
+                        <small> Copyright &copy; 2023 Oluyomi Godwin </small>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="js/cart.js"></script>
+    </body>
+</html>
+        
